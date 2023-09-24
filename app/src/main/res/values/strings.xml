@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">NoteClock</string>
+    <string name="app_name">Note clock</string>
+
+    <style name="MyTextInputStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="hintTextColor">@color/black</item>
+    </style>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
