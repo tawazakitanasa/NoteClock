@@ -10,7 +10,7 @@
     />
     <item
         android:id="@+id/mToday"
-        android:title="ToDay"
+        android:title="Today"
         app:showAsAction="ifRoom"
         android:icon="@drawable/baseline_calendar_today_24"
         />
