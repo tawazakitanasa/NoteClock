@@ -44,18 +44,6 @@
             android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
-            <!--            <com.google.android.material.textfield.TextInputLayout-->
-            <!--                android:id="@+id/txt_layout_title"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:textColorHint="@color/black"-->
-            <!--                android:hint="Nhập tiêu đề">-->
-
-            <!--                <com.google.android.material.textfield.TextInputEditText-->
-            <!--                    android:id="@+id/txt_title"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content" />-->
-            <!--            </com.google.android.material.textfield.TextInputLayout>-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txt_layout_title"
                 style="@style/MyTextInputStyle"
@@ -99,12 +87,6 @@
                 android:layout_marginTop="5dp"
                 android:hint="Chọn ngày"
                 android:textColorHint="@color/black">
-                <!--                <com.google.android.material.textfield.TextInputEditText-->
-                <!--                    android:id="@+id/txt_date"-->
-                <!--                    android:textColor="@color/black"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                     />-->
                 <EditText
                     android:id="@+id/txt_date"
                     android:layout_width="match_parent"
@@ -143,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:backgroundTint="@color/splash"
                 android:text="Thêm"
                 android:textColor="@color/black" />

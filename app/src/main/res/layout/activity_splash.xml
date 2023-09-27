@@ -25,13 +25,6 @@
            android:text="@string/app_name"
            android:textColor="@color/white"
            android:textSize="60dp" />
-<!--       <ProgressBar-->
-<!--           android:outlineAmbientShadowColor="@color/black"-->
-<!--           android:id="@+id/loading_progress_bar"-->
-<!--           android:layout_width="wrap_content"-->
-<!--           android:layout_height="wrap_content"-->
-<!--           android:layout_gravity="center"-->
-<!--           android:visibility="gone"/>-->
        <ProgressBar
            android:id="@+id/loading_progress_bar"
            android:layout_width="wrap_content"
