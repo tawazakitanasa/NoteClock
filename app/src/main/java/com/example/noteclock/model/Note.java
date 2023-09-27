@@ -3,67 +3,60 @@ package com.example.noteclock.model;
 
 public class Note {
     private int id;
-    private String title;
-    private String content;
-    private String date;
-    private String time;
+    private String TieuDe;
+    private String NoiDung;
+    private String Ngay;
+    private String Gio;
 
     public Note(){
 
     }
 
-    public Note(String title, String content, String date, String time) {
-        this.title = title;
-        this.content = content;
-        this.date = date;
-        this.time = time;
-    }
-
-    public Note(int id,String title, String content, String date, String time) {
-        this.id=id;
-        this.title = title;
-        this.content = content;
-        this.date = date;
-        this.time = time;
+    public Note(int id, String tieuDe, String noiDung, String ngay, String gio) {
+        this.id = id;
+        TieuDe = tieuDe;
+        NoiDung = noiDung;
+        Ngay = ngay;
+        Gio = gio;
     }
 
     public int getId() {
         return id;
     }
 
+    public String getTieuDe() {
+        return TieuDe;
+    }
+
+    public String getNoiDung() {
+        return NoiDung;
+    }
+
+    public String getNgay() {
+        return Ngay;
+    }
+
+    public String getGio() {
+        return Gio;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public void setTieuDe(String tieuDe) {
+        TieuDe = tieuDe;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNoiDung(String noiDung) {
+        NoiDung = noiDung;
     }
 
-    public String getContent() {
-        return content;
+    public void setNgay(String ngay) {
+        Ngay = ngay;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setGio(String gio) {
+        Gio = gio;
     }
 }
