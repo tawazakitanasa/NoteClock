@@ -111,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
                     String day=dates[0];
                     String month=dates[1];
                     String year=dates[2];
-                    Log.e("Day",day);
+                  /*  Log.e("Day",day);
                     Log.e("Moth",month);
-                    Log.e("Year",year);
+                    Log.e("Year",year);*/
                 }
 
 
@@ -124,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
                     String minute = times[1];
                     gio=Integer.parseInt(hour);
                     phut=Integer.parseInt(minute);
-                    Log.e("Giờ", Integer.toString(gio));
-                    Log.e("Phút", Integer.toString(phut));
+                 /*   Log.e("Giờ", Integer.toString(gio));
+                    Log.e("Phút", Integer.toString(phut));*/
                 } else {
                     Log.e("Lỗi", "Chuỗi không hợp lệ");
                 }
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.show();
         }
     }
-
+//Chọn ngày
     private void selectDate(final EditText txtDate) {
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -160,13 +160,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+//Chọn ngày
     private String updateDate() {
         String format = "dd/MM/yyyy";
         SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.US);
         return dateFormat.format(myCalendar.getTime());
     }
-
+//Chọn giờ
     private void selectTime(final EditText txtTime) {
         Calendar currentTime = Calendar.getInstance();
         int hour = currentTime.get(Calendar.HOUR_OF_DAY);
