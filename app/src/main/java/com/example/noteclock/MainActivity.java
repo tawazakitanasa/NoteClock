@@ -21,6 +21,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.noteclock.Adapter.ViewpageAdapter;
+import com.example.noteclock.SQL.SQLite;
+import com.example.noteclock.model.Note;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mBottomNavigationView;
     private FloatingActionButton fab;
     private Calendar myCalendar = Calendar.getInstance();
+    private SQLite db;
     private int gio,phut,ngay,thang,nam;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 String selectedTime = txtTime.getText().toString();
                 String title = txtTitle.getText().toString();
                 String content = txtContent.getText().toString();
-
+                db=new SQLite(this);
+                db.Add(new Note(title,content,selectedDate,selectedTime));
                 //tach chuoi ngay
                 String[] dates=selectedDate.split("/");
                 if(dates.length>0){

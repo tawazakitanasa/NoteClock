@@ -98,4 +98,29 @@ public class SQLite extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase=getWritableDatabase();
         return sqLiteDatabase.delete("notes",item,whereArgs);
     }
+    //Tim kiem thong tin
+    public List<Note> getBySearch(String key) {
+        List<Note> list = new ArrayList<>();
+        String selection = "title LIKE ? OR content LIKE ?";
+        String[] selectionArgs = new String[]{"%" + key + "%", "%" + key + "%"};
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query("notes", null, selection, selectionArgs, null, null, null);
+
+        while (cursor != null && cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String title = cursor.getString(1);
+            String content = cursor.getString(2);
+            String date = cursor.getString(3);
+            String time = cursor.getString(4);
+            list.add(new Note(id, title, content, date, time));
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+
+        return list;
+    }
+
 }
