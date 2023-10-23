@@ -50,7 +50,7 @@ public class FragmentSearch extends Fragment {
         btnTimKiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String search =txtsearch.getText().toString();
+                String search = txtsearch.getText().toString();
 
                 if (!search.isEmpty()) {
                     List<Note> list = db.getBySearch(search);
@@ -67,6 +67,7 @@ public class FragmentSearch extends Fragment {
                     Toast.makeText(getContext(), "vui lòng nhập thông tin tìm kiếm.", Toast.LENGTH_SHORT).show();
                 }
             }
+        });
     }
 
     @Override
