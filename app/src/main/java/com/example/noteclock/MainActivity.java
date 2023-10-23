@@ -3,9 +3,12 @@ package com.example.noteclock;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -29,6 +32,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private Calendar myCalendar = Calendar.getInstance();
     private SQLite db;
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent;
     private int gio,phut,ngay,thang,nam;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +78,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
         fab.setOnClickListener(view -> openDialog(Gravity.CENTER));
-
-    }
+        db = new SQLite(this);
+        List<Note> list = db.getAll();
+        for (Note note : list) {
+            String time = note.getTime();
+            String[] timeParts = time.split(":");
+            int gio = 0;
+            int phut = 0;
+            if (timeParts.length >= 2 && !timeParts[0].isEmpty() && !timeParts[1].isEmpty()) {
+                gio = Integer.parseInt(timeParts[0]);
+                phut = Integer.parseInt(timeParts[1]);
+            }
+            String sgio = String.valueOf(gio);
+            String sphut = String.valueOf(phut);
+            if (gio < 10) {
+                sgio = "0" + gio;
+            }
+            if (phut < 10) {
+                sphut = "0" + phut;
+            }
+            Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
+            intent.setAction("MyAction");
+            intent.putExtra("time", sgio + ":" + sphut);
+            alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, myCalendar.getTimeInMillis(), pendingIntent);
+        }
+}
 
     private void initViews() {
         mBottomNavigationView = findViewById(R.id.bottom_nav);
