@@ -75,7 +75,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
             tvTime = itemView.findViewById(R.id.tv_time);
             itemView.setOnClickListener(this);
         }
-
+    
         @Override
         public void onClick(View view) {
             if (itemListener != null) {

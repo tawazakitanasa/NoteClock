@@ -15,16 +15,37 @@
         android:text="Search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_listSearch"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
         android:orientation="vertical"
-        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content">
 
-        tools:listitem=""
-        tools:ignore="InvalidId" />
-
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/baseline_search_24"
+            android:hint="Nhập thông tin tìm kiếm"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnTimKiem"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:text="Tìm kiếm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_list_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 </LinearLayout>
