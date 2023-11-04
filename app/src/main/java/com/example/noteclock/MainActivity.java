@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.noteclock.Adapter.RecycleViewAdapter;
 import com.example.noteclock.Adapter.ViewpageAdapter;
 import com.example.noteclock.SQL.SQLite;
 import com.example.noteclock.model.Note;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private SQLite db;
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
+    private RecycleViewAdapter adapter;
+
     private int gio,phut,ngay,thang,nam;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initViews();
         mViewpager2.setAdapter(new ViewpageAdapter(this));
+        adapter = new RecycleViewAdapter();
 
         mViewpager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -105,7 +109,10 @@ public class MainActivity extends AppCompatActivity {
             alarmManager.set(AlarmManager.RTC_WAKEUP, myCalendar.getTimeInMillis(), pendingIntent);
         }
 }
-
+    public void LoadList(){
+        List<Note> list = db.getAll();
+        adapter.setNotes(list);
+    }
     private void initViews() {
         mBottomNavigationView = findViewById(R.id.bottom_nav);
         mViewpager2 = findViewById(R.id.view_page_2);
@@ -140,34 +147,11 @@ public class MainActivity extends AppCompatActivity {
                 String content = txtContent.getText().toString();
                 db=new SQLite(this);
                 db.Add(new Note(title,content,selectedDate,selectedTime));
-                //tach chuoi ngay
-                String[] dates=selectedDate.split("/");
-                if(dates.length>0){
-                    String day=dates[0];
-                    String month=dates[1];
-                    String year=dates[2];
-                  /*  Log.e("Day",day);
-                    Log.e("Moth",month);
-                    Log.e("Year",year);*/
-                }
-
-
-                //tach chuoi gio va ep ve int
-                String[] times = selectedTime.split(":");
-                if (times.length >0) {
-                    String hour = times[0];
-                    String minute = times[1];
-                    gio=Integer.parseInt(hour);
-                    phut=Integer.parseInt(minute);
-                 /*   Log.e("Giờ", Integer.toString(gio));
-                    Log.e("Phút", Integer.toString(phut));*/
-                } else {
-                    Log.e("Lỗi", "Chuỗi không hợp lệ");
-                }
 
                 Toast.makeText(MainActivity.this, "Tạo mới ghi chú thành công", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();
+                LoadList();
             });
 
             dialog.show();

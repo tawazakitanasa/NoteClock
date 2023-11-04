@@ -76,6 +76,7 @@ public class FragmentHome extends Fragment implements RecycleViewAdapter.ItemLis
         adapter.setItemListener(this);
     }
 
+
     @Override
     public void onItemClick(View view, int position) {
         ImageView img_edit_note, img_delete_note;
@@ -190,18 +191,25 @@ public class FragmentHome extends Fragment implements RecycleViewAdapter.ItemLis
         count = list.size();
         return count;
     }
-
+    //vòng đời java
     @Override
     public void onResume() {
 
         super.onResume();
         List<Note> list = db.getAll();
-        Log.e("OK",String.valueOf(list.size()));
         adapter.setNotes(list);
         tvCount.setText("Tổng số ghi chú " + Count(list));
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        List<Note> list = db.getAll();
+        adapter.setNotes(list);
+        tvCount.setText("Tổng số ghi chú " + Count(list));
+    }
 
+    //Chọn ngày để thêm sửa
     private void selectDate(final EditText txtDate) {
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -223,13 +231,13 @@ public class FragmentHome extends Fragment implements RecycleViewAdapter.ItemLis
             }
         });
     }
-
+    //Format ngày
     private String updateDate() {
         String format = "dd/MM/yyyy";
         SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.US);
         return dateFormat.format(myCalendar.getTime());
     }
-
+    //giá trị final không thể thay đổi
     private void selectTime(final EditText txtTime) {
         Calendar currentTime = Calendar.getInstance();
         int hour = currentTime.get(Calendar.HOUR_OF_DAY);
