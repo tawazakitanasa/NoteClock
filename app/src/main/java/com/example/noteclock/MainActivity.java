@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 sphut = "0" + phut;
             }
             Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
-            intent.setAction("MyAction");
+            intent.setAction("BaoThuc");
             intent.putExtra("time", sgio + ":" + sphut);
             alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);

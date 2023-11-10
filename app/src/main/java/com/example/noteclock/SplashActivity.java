@@ -21,10 +21,8 @@ public class SplashActivity extends AppCompatActivity {
         Handler handler = new Handler();
         loadingProgressBar = findViewById(R.id.loading_progress_bar);
 
-        // Tạo một ColorStateList với màu đen
         ColorStateList colorStateList = ColorStateList.valueOf(Color.BLACK);
 
-        // Đặt màu cho ProgressBar (ProgressBar có tính chất xác định)
         loadingProgressBar.setProgressTintList(colorStateList);
 
         loadingProgressBar.setVisibility(View.VISIBLE);
