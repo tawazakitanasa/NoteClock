@@ -56,7 +56,7 @@ public class FragmentSearch extends Fragment {
                     List<Note> list = db.getBySearch(search);
 
                     if (list.isEmpty()) {
-                        Toast.makeText(getContext(), "Không tìm thấy kết quả.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Không tìm thấy thông tin.", Toast.LENGTH_SHORT).show();
                     } else {
                         adapter.setNotes(list);
                         LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);

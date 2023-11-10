@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Note clock</string>
+    <string name="app_name">Ghi chú</string>
 
     <style name="MyTextInputStyle">
         <item name="android:textColor">@color/black</item>

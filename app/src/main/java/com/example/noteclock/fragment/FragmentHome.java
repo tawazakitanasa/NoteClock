@@ -82,10 +82,6 @@ public class FragmentHome extends Fragment implements RecycleViewAdapter.ItemLis
         ImageView img_edit_note, img_delete_note;
         img_edit_note = view.findViewById(R.id.img_edit_note);
         img_delete_note = view.findViewById(R.id.img_delete_note);
-//        Note note = adapter.getNote(position);
-//        Intent intent = new Intent(getActivity(), UpdateDeleteActivity.class);
-//        intent.putExtra("note", (Serializable) note);
-//        startActivity(intent);
         img_edit_note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -160,9 +156,7 @@ public class FragmentHome extends Fragment implements RecycleViewAdapter.ItemLis
 
                 builder.setTitle("Thông báo");
                 builder.setMessage("Bạn có muốn xóa ghi chú?");
-
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-
                     public void onClick(DialogInterface dialog, int which) {
                         Note note = adapter.getNote(position);
                         db.Delete(note.getId());

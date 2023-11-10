@@ -122,23 +122,4 @@ public class SQLite extends SQLiteOpenHelper {
 
         return list;
     }
-
-    //Hàm chọn theo ngày
-    public List<Note> SerachBydate(String date){
-        List<Note> list=new ArrayList<>();
-        String item="date like ?";
-        String[] whereArgs={date};
-        SQLiteDatabase st=getReadableDatabase();
-        Cursor rs=st.query("notes",null,item,whereArgs,null,null,null);
-        while (rs!=null && rs.moveToNext()){
-            int id=rs.getInt(0);
-            String title=rs.getString(1);
-            String content=rs.getString(2);
-            String date1=rs.getString(3);
-            String time=rs.getString(4);
-            list.add(new Note(id,title,content,date1,time));
-        }
-        return list;
-    }
-
 }
